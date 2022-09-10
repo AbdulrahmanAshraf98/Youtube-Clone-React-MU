@@ -12,9 +12,9 @@ function App() {
 			<Navbar />
 			<Routes>
 				<Route index path="/" element={<Feed />} />
-				<Route index path="/video/:id" element={<VideoDetail />} />
-				<Route index path="/channel/:id" element={<ChannelDetail />} />
-				<Route index path="/search/:searchTerm" element={<SearchFeed />} />
+				<Route path="/video/:id" element={<VideoDetail />} />
+				<Route path="/channel/:id" element={<ChannelDetail />} />
+				<Route path="/search/:searchTerm" element={<SearchFeed />} />
 			</Routes>
 		</Box>
 	);
