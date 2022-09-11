@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import ChannelDetail from "./Routes/ChannelDetail/ChannelDetail";
@@ -8,7 +8,7 @@ import VideoDetail from "./Routes/VideoDetail/VideoDetail";
 
 function App() {
 	return (
-		<Box sx={{ backgroundColor: "#000", height: "100vh", color: "white" }}>
+		<Box sx={{ backgroundColor: "#000", height: "100%", color: "white" }}>
 			<Navbar />
 			<Routes>
 				<Route index path="/" element={<Feed />} />
