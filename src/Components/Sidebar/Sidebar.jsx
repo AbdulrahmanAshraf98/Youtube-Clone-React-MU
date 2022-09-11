@@ -1,8 +1,13 @@
 import { Stack } from "@mui/material";
-import React from "react";
+import React, { useCallback } from "react";
 import { categories } from "../../Utils/constant/constant";
-const selectedCategory = "New";
-const Sidebar = () => {
+const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
+	const selectedCategoryHandler = useCallback(
+		(categoryName) => {
+			setSelectedCategory((prevState) => categoryName);
+		},
+		[setSelectedCategory],
+	);
 	return (
 		<Stack
 			direction="row"
@@ -18,7 +23,8 @@ const Sidebar = () => {
 					style={{
 						background: category.name === selectedCategory && "#FC1503",
 						color: "#fff",
-					}}>
+					}}
+					onClick={() => selectedCategoryHandler(category.name)}>
 					<span
 						style={{
 							color: category.name === selectedCategory ? "#fff" : "red",
