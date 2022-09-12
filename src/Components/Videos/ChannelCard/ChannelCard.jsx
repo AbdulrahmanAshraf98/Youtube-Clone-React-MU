@@ -1,9 +1,10 @@
 import { CheckCircle } from "@mui/icons-material";
 import { Box, CardContent, CardMedia, Typography } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-const ChannelCard = ({ channelDetail }) => {
+const ChannelCard = ({ channelDetail, marginTop }) => {
+	const { id } = useParams();
 	return (
 		<Box
 			sx={{
@@ -15,8 +16,14 @@ const ChannelCard = ({ channelDetail }) => {
 				width: { xs: "350px", md: "320px" },
 				height: "360px",
 				margin: "auto",
+				marginTop,
 			}}>
-			<Link to={`channel/${channelDetail.id.channelId}`}>
+			<Link
+				to={`${
+					id === channelDetail.id.channelId
+						? "#"
+						: `channel/${channelDetail.id.channelId}`
+				} `}>
 				<CardContent
 					sx={{
 						display: "flex",
@@ -36,10 +43,17 @@ const ChannelCard = ({ channelDetail }) => {
 							border: "1px solid #e3e3e3",
 						}}
 					/>
+
 					<Typography variant="h6">
 						{channelDetail.snippet.title}
 						<CheckCircle sx={{ fontSize: "14px", color: "gray", ml: "5px" }} />
 					</Typography>
+					{channelDetail?.statistics?.subscriberCount && (
+						<Typography>
+							{(+channelDetail.statistics.subscriberCount).toLocaleString()}{" "}
+							SubScriber
+						</Typography>
+					)}
 				</CardContent>
 			</Link>
 		</Box>

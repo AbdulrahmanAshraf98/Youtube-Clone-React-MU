@@ -20,7 +20,6 @@ const Feed = () => {
 	};
 	useEffect(() => {
 		getVideosData();
-		console.log(videos);
 	}, [selectedCategory]);
 	return (
 		<Stack sx={{ flexDirection: { xs: "column", md: "row" } }}>
