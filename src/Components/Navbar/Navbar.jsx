@@ -5,14 +5,12 @@ import { logo } from "../../Utils/constant/constant";
 import SearchBar from "../SearchBar/SearchBar";
 const Navbar = () => {
 	return (
-		<Box sx={{ backgroundColor: "#000" }}>
+		<Box sx={{ backgroundColor: "#000", position: "sticky", top: "0" }}>
 			<Stack
 				direction="row"
 				alignItems="center"
 				p={2}
 				sx={{
-					position: "sticky",
-					top: "0",
 					justifyContent: "space-between",
 				}}>
 				<Link to="/" style={{ display: "flex", alignItems: "center" }}>

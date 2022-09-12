@@ -5,11 +5,16 @@ import VideoCard from "./VideosCard/VideoCard";
 
 const Videos = ({
 	videos,
+	direction = "row",
 	justifyContent = { xs: "space-between", md: "flex-start" },
-	videoItemWidth = { xs: "100%", sm: "45%", lg: "320px" },
+	videoItemWidth = { xs: "100%", sm: "45%", md: "30%", lg: "320px" },
 }) => {
 	return (
-		<Stack direction={"row"} flexWrap="wrap" gap={4} sx={{ justifyContent }}>
+		<Stack
+			direction={direction}
+			flexWrap="wrap"
+			gap={4}
+			sx={{ justifyContent }}>
 			{videos.map(
 				(item, index) =>
 					(item.id.videoId || item.id.channelId) && (
