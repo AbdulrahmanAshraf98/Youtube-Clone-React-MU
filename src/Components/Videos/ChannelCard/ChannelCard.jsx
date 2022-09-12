@@ -20,7 +20,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => {
 			}}>
 			<Link
 				to={`${
-					id === channelDetail.id.channelId
+					id !== channelDetail.id.channelId
 						? "#"
 						: `channel/${channelDetail.id.channelId}`
 				} `}>
