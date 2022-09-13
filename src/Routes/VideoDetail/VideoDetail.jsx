@@ -6,7 +6,10 @@ import { CheckCircle } from "@mui/icons-material";
 import { fetchDataFromApi } from "../../Utils/fetchFromApi";
 import Videos from "../../Components/Videos/Videos";
 import { useDispatch, useSelector } from "react-redux";
-import { setVideoDetails } from "../../Store/VideoDetails/videDetails.actions";
+import {
+	fetchSearchFeed,
+	setVideoDetails,
+} from "../../Store/VideoDetails/videDetails.actions";
 import { videoDetailsSelector } from "../../Store/VideoDetails/videoDetails.selector";
 
 const VideoDetail = () => {
@@ -14,23 +17,8 @@ const VideoDetail = () => {
 	const { videoDetailsInfo, recommendedVideos } = videoDetailsData;
 	const dispatch = useDispatch();
 	const { id } = useParams();
-	const getVideoData = async () => {
-		const videoDetailData = await fetchDataFromApi(
-			`videos?part=snippet,statistics&id=${id}`,
-		);
-		const recommendedVideosData = await fetchDataFromApi(
-			`search?part=snippet&relatedToVideoId=${id}&type=video`,
-		);
-		dispatch(
-			setVideoDetails({
-				videoDetailsInfo: videoDetailData.items[0],
-				recommendedVideos: recommendedVideosData.items,
-			}),
-		);
-	};
-
 	useEffect(() => {
-		getVideoData();
+		dispatch(fetchSearchFeed(id));
 	}, [id]);
 
 	return (

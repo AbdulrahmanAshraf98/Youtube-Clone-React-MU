@@ -1,3 +1,5 @@
 export const VIDEO_Details_ACTIONS = {
-	SET_VIDEO_Details: "VIDEO_Details/SET_VIDEO_Details",
+	FETCH_VIDEO_Details_START: "VIDEO_Details/FETCH_VIDEO_Details_START",
+	FETCH_VIDEO_Details_SUCCESS: "VIDEO_Details/FETCH_VIDEO_Details_SUCCESS",
+	FETCH_VIDEO_Details_FAILED: "VIDEO_Details/FETCH_VIDEO_Details_FAILED",
 };

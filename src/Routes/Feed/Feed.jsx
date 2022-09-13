@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Videos from "../../Components/Videos/Videos";
-import { setFeedVideos } from "../../Store/FeedVideos/feedVideos.actions";
+import { fetchFeedVideos } from "../../Store/FeedVideos/feedVideos.actions";
 import { feedVideosSelector } from "../../Store/FeedVideos/feedVideos.selector";
 import { fetchDataFromApi } from "../../Utils/fetchFromApi";
 
@@ -12,18 +12,8 @@ const Feed = () => {
 	const dispatch = useDispatch();
 	const [selectedCategory, setSelectedCategory] = useState("New");
 	const videos = useSelector(feedVideosSelector);
-	const getVideosData = async () => {
-		try {
-			const data = await fetchDataFromApi(
-				`search?q=${selectedCategory}&part=snippet`,
-			);
-			dispatch(setFeedVideos(data.items));
-		} catch (error) {
-			console.log(error.message);
-		}
-	};
 	useEffect(() => {
-		getVideosData();
+		dispatch(fetchFeedVideos(selectedCategory));
 	}, [selectedCategory]);
 	return (
 		<Stack sx={{ flexDirection: { xs: "column", md: "row" } }}>
@@ -57,7 +47,7 @@ const Feed = () => {
 					sx={{ color: "#fff" }}>
 					{selectedCategory} <span style={{ color: "#F31503" }}>Videos</span>
 				</Typography>
-				{videos.length && <Videos videos={videos} />}
+				{videos.length !== 0 && <Videos videos={videos} />}
 			</Box>
 		</Stack>
 	);
