@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { Box, CircularProgress } from "@mui/material";
 import Videos from "../../Components/Videos/Videos";
 import ChannelCard from "../../Components/Videos/ChannelCard/ChannelCard";
-import { fetchDataFromApi } from "../../Utils/fetchFromApi";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchChannelDetails } from "../../Store/ChannelDetails/channelDetails.action";
 import {
@@ -26,7 +25,7 @@ const ChannelDetail = () => {
 
 	return (
 		<>
-			{isLoading && !channelDetailData && !error && <Loading />}
+			{isLoading && !error && <Loading />}
 			{!isLoading && channelDetailData && !error && (
 				<Box minHeight="95vh">
 					<Box>
