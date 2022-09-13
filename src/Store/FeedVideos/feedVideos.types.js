@@ -1,0 +1,3 @@
+export const FEED_VIDEOS_ACTIONS = {
+	SET_VIDEOS: "FEED_VIDEOS/SET_VIDEOS",
+};
