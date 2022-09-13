@@ -14,13 +14,11 @@ const Videos = ({
 			direction={direction}
 			flexWrap="wrap"
 			gap={4}
-			sx={{ justifyContent }}>
+			sx={{ justifyContent, px: { xs: 2, sm: 0 } }}>
 			{videos.map(
 				(item, index) =>
 					(item.id.videoId || item.id.channelId) && (
-						<Box
-							key={index}
-							sx={{ width: videoItemWidth, px: { xs: 2, sm: 0 } }}>
+						<Box key={index} sx={{ width: videoItemWidth }}>
 							{item.id.videoId && <VideoCard video={item} />}
 							{item.id.channelId && <ChannelCard channelDetail={item} />}
 						</Box>
