@@ -1,18 +1,23 @@
 import { Box, Typography } from "@mui/material";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Videos from "../../Components/Videos/Videos";
+import { setSearchVideosResult } from "../../Store/SearchFeed/SearchFeed.actions";
+import { searchFeedVideosSelector } from "../../Store/SearchFeed/SearchFeed.selector";
 import { fetchDataFromApi } from "../../Utils/fetchFromApi";
 
 const SearchFeed = () => {
-	const [videos, setVideos] = useState([]);
+	const videos = useSelector(searchFeedVideosSelector);
 	const { searchTerm } = useParams();
+	const dispatch = useDispatch();
 	const getVideosData = useCallback(async () => {
 		try {
 			const data = await fetchDataFromApi(
 				`search?q=${searchTerm}&part=snippet`,
 			);
-			setVideos(data.items);
+
+			dispatch(setSearchVideosResult(data.items));
 		} catch (error) {
 			console.log(error.message);
 		}

@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 import { fetchDataFromApi } from "../../Utils/fetchFromApi";
 import Videos from "../../Components/Videos/Videos";
+import { useDispatch, useSelector } from "react-redux";
+import { setVideoDetails } from "../../Store/VideoDetails/videDetails.actions";
+import { videoDetailsSelector } from "../../Store/VideoDetails/videoDetails.selector";
 
 const VideoDetail = () => {
-	const [videoDetail, setVideoDetail] = useState(null);
-	const [recommendedVideos, setRecommendedVideos] = useState([]);
+	const videoDetailsData = useSelector(videoDetailsSelector);
+	const { videoDetailsInfo, recommendedVideos } = videoDetailsData;
+	const dispatch = useDispatch();
 	const { id } = useParams();
 	const getVideoData = async () => {
 		const videoDetailData = await fetchDataFromApi(
@@ -17,72 +21,87 @@ const VideoDetail = () => {
 		const recommendedVideosData = await fetchDataFromApi(
 			`search?part=snippet&relatedToVideoId=${id}&type=video`,
 		);
-		setVideoDetail(videoDetailData.items[0]);
-		setRecommendedVideos(recommendedVideosData.items);
+		dispatch(
+			setVideoDetails({
+				videoDetailsInfo: videoDetailData.items[0],
+				recommendedVideos: recommendedVideosData.items,
+			}),
+		);
 	};
+
 	useEffect(() => {
 		getVideoData();
-		console.log(recommendedVideos);
 	}, [id]);
 
 	return (
 		<Box minHeight="95vh">
 			<Stack direction={{ xs: "column", md: "row" }}>
-				<Box flex={{ xs: 1, md: 3 }} px={{ md: 2 }}>
-					<Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
-						<ReactPlayer
-							url={`https://www.youtube.com/watch?v=${id}`}
-							className="react-player"
-							controls
-						/>
-						{videoDetail && (
-							<>
-								<Typography color="#fff" variant="h5" fontWight="bold" p={2}>
-									{videoDetail.snippet.title}
-								</Typography>
-								<Stack
-									direction="row"
-									justifyContent="space-between"
-									sx={{ color: "#fff", py: 1, px: 2 }}>
-									<Link to={`/channel/${videoDetail.snippet.channelId}`}>
+				{videoDetailsInfo && recommendedVideos && (
+					<>
+						<Box flex={{ xs: 1, md: 3 }} px={{ md: 2 }}>
+							<Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
+								<ReactPlayer
+									url={`https://www.youtube.com/watch?v=${id}`}
+									className="react-player"
+									controls
+								/>
+								{videoDetailsInfo && (
+									<>
 										<Typography
-											variant={{ sm: "subtitle1", md: "h6" }}
-											color="#fff">
-											{videoDetail.snippet.channelTitle}
-											<CheckCircle
-												sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
-											/>
+											color="#fff"
+											variant="h5"
+											fontWight="bold"
+											p={2}>
+											{videoDetailsInfo.snippet.title}
 										</Typography>
-									</Link>
-									<Stack direction="row" gap={2} alignItems="center">
-										<Typography variant="body1" sx={{ opacity: 0.7 }}>
-											{(+videoDetail.statistics.viewCount).toLocaleString()}
-											views
-										</Typography>
-										<Typography variant="body1" sx={{ opacity: 0.7 }}>
-											{(+videoDetail.statistics.likeCount).toLocaleString()}
-											Likes
-										</Typography>
-									</Stack>
-								</Stack>
-							</>
-						)}
-					</Box>
-				</Box>
-				<Box
-					flex={{ xs: 1, md: 1 }}
-					px={2}
-					py={{ xs: 1, md: 5 }}
-					justifyContent="center"
-					alignItems="center">
-					{recommendedVideos && (
-						<Videos
-							videos={recommendedVideos.slice(1, 10)}
-							direction={{ xs: "row", md: "column" }}
-							videoItemWidth={{ xs: "100%", sm: "320px" }}
-						/>
-					)}
-				</Box>
+										<Stack
+											direction="row"
+											justifyContent="space-between"
+											sx={{ color: "#fff", py: 1, px: 2 }}>
+											<Link
+												to={`/channel/${videoDetailsInfo.snippet.channelId}`}>
+												<Typography
+													variant={{ sm: "subtitle1", md: "h6" }}
+													color="#fff">
+													{videoDetailsInfo.snippet.channelTitle}
+													<CheckCircle
+														sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
+													/>
+												</Typography>
+											</Link>
+											<Stack direction="row" gap={2} alignItems="center">
+												<Typography variant="body1" sx={{ opacity: 0.7 }}>
+													{(+videoDetailsInfo.statistics
+														.viewCount).toLocaleString()}
+													views
+												</Typography>
+												<Typography variant="body1" sx={{ opacity: 0.7 }}>
+													{(+videoDetailsInfo.statistics
+														.likeCount).toLocaleString()}
+													Likes
+												</Typography>
+											</Stack>
+										</Stack>
+									</>
+								)}
+							</Box>
+						</Box>
+						<Box
+							flex={{ xs: 1, md: 1 }}
+							px={2}
+							py={{ xs: 1, md: 5 }}
+							justifyContent="center"
+							alignItems="center">
+							{recommendedVideos && (
+								<Videos
+									videos={recommendedVideos.slice(1, 10)}
+									direction={{ xs: "row", md: "column" }}
+									videoItemWidth={{ xs: "100%", sm: "320px" }}
+								/>
+							)}
+						</Box>
+					</>
+				)}
 			</Stack>
 		</Box>
 	);

@@ -1,19 +1,23 @@
 import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Videos from "../../Components/Videos/Videos";
+import { setFeedVideos } from "../../Store/FeedVideos/FeedVideos.actions";
+import { feedVideosSelector } from "../../Store/FeedVideos/FeedVideos.selector";
 import { fetchDataFromApi } from "../../Utils/fetchFromApi";
 
 const Feed = () => {
+	const dispatch = useDispatch();
 	const [selectedCategory, setSelectedCategory] = useState("New");
-	const [videos, setVideos] = useState([]);
+	const videos = useSelector(feedVideosSelector);
 	const getVideosData = async () => {
 		try {
 			const data = await fetchDataFromApi(
 				`search?q=${selectedCategory}&part=snippet`,
 			);
-			setVideos(data.items);
+			dispatch(setFeedVideos(data.items));
 		} catch (error) {
 			console.log(error.message);
 		}
@@ -53,7 +57,7 @@ const Feed = () => {
 					sx={{ color: "#fff" }}>
 					{selectedCategory} <span style={{ color: "#F31503" }}>Videos</span>
 				</Typography>
-				<Videos videos={videos} />
+				{videos.length && <Videos videos={videos} />}
 			</Box>
 		</Stack>
 	);
