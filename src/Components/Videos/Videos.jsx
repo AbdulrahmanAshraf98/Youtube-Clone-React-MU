@@ -18,7 +18,9 @@ const Videos = ({
 			{videos.map(
 				(item, index) =>
 					(item.id.videoId || item.id.channelId) && (
-						<Box key={index} sx={{ width: videoItemWidth }}>
+						<Box
+							key={index}
+							sx={{ width: videoItemWidth, px: { xs: 2, sm: 0 } }}>
 							{item.id.videoId && <VideoCard video={item} />}
 							{item.id.channelId && <ChannelCard channelDetail={item} />}
 						</Box>
