@@ -3,8 +3,8 @@ import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Videos from "../../Components/Videos/Videos";
-import { setSearchVideosResult } from "../../Store/SearchFeed/SearchFeed.actions";
-import { searchFeedVideosSelector } from "../../Store/SearchFeed/SearchFeed.selector";
+import { setSearchVideosResult } from "../../Store/SearchFeed/searchFeed.actions";
+import { searchFeedVideosSelector } from "../../Store/SearchFeed/searchFeed.selector";
 import { fetchDataFromApi } from "../../Utils/fetchFromApi";
 
 const SearchFeed = () => {

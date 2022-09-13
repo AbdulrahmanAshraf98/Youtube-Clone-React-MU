@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Videos from "../../Components/Videos/Videos";
-import { setFeedVideos } from "../../Store/FeedVideos/FeedVideos.actions";
-import { feedVideosSelector } from "../../Store/FeedVideos/FeedVideos.selector";
+import { setFeedVideos } from "../../Store/FeedVideos/feedVideos.actions";
+import { feedVideosSelector } from "../../Store/FeedVideos/feedVideos.selector";
 import { fetchDataFromApi } from "../../Utils/fetchFromApi";
 
 const Feed = () => {

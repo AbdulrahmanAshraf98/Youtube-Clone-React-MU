@@ -1,5 +1,5 @@
 import { createActions } from "../../Utils/Reducer/reducer.utilis";
-import { FEED_VIDEOS_ACTIONS } from "./FeedVideos.types";
+import { FEED_VIDEOS_ACTIONS } from "./feedVideos.types";
 
 export const setFeedVideos = (feedVideos) =>
 	createActions(FEED_VIDEOS_ACTIONS.SET_VIDEOS, feedVideos);
