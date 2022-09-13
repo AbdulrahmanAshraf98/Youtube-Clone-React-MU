@@ -85,7 +85,7 @@ const VideoDetail = () => {
 						</Box>
 						<Box
 							flex={{ xs: 1, md: 1 }}
-							px={2}
+							px={{ xs: 0, md: 2 }}
 							py={{ xs: 1, md: 5 }}
 							justifyContent="center"
 							alignItems="center">
