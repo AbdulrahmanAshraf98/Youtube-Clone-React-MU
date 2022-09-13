@@ -5,8 +5,8 @@ import Videos from "../../Components/Videos/Videos";
 import ChannelCard from "../../Components/Videos/ChannelCard/ChannelCard";
 import { fetchDataFromApi } from "../../Utils/fetchFromApi";
 import { useDispatch, useSelector } from "react-redux";
-import { setChannelData } from "../../Store/ChannelDetails/ChannelDetails.action";
-import { channelDetailsDataSelector } from "../../Store/ChannelDetails/ChannelDetails.selector";
+import { setChannelData } from "../../Store/ChannelDetails/channelDetails.action";
+import { channelDetailsDataSelector } from "../../Store/ChannelDetails/channelDetails.selector";
 const ChannelDetail = () => {
 	const { id } = useParams();
 	const channelDetailData = useSelector(channelDetailsDataSelector);
