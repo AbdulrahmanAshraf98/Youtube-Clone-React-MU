@@ -11,7 +11,7 @@ import {
 	selectChannelDetailsError,
 	selectChannelDetailsISloading,
 } from "../../Store/ChannelDetails/channelDetails.selector";
-import Loading from "../../Components/Loading/Loading";
+import Loading from "../../Components/Loading/Loading.jsx";
 import Error from "../../Components/Error/Error";
 const ChannelDetail = () => {
 	const { id } = useParams();
