@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import Videos from "../../Components/Videos/Videos";
 import ChannelCard from "../../Components/Videos/ChannelCard/ChannelCard";
 import { fetchDataFromApi } from "../../Utils/fetchFromApi";
@@ -8,22 +8,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchChannelDetails } from "../../Store/ChannelDetails/channelDetails.action";
 import {
 	channelDetailsDataSelector,
+	selectChannelDetailsError,
 	selectChannelDetailsISloading,
 } from "../../Store/ChannelDetails/channelDetails.selector";
+import Loading from "../../Components/Loading/Loading";
+import Error from "../../Components/Error/Error";
 const ChannelDetail = () => {
 	const { id } = useParams();
-	let isLoading = useSelector(selectChannelDetailsISloading);
+	const dispatch = useDispatch();
 	const channelDetailData = useSelector(channelDetailsDataSelector);
 	const { channelInfo, channelVideos } = channelDetailData;
-	const dispatch = useDispatch();
+	const isLoading = useSelector(selectChannelDetailsISloading);
+	const error = useSelector(selectChannelDetailsError);
 	useEffect(() => {
 		dispatch(fetchChannelDetails(id));
 	}, [id]);
 
 	return (
 		<>
-			{isLoading && <Box xs={{ color: "#fff" }}>Loading</Box>}
-			{!isLoading && channelDetailData && (
+			{isLoading && !channelDetailData && !error && <Loading />}
+			{!isLoading && channelDetailData && !error && (
 				<Box minHeight="95vh">
 					<Box>
 						<div
@@ -50,6 +54,7 @@ const ChannelDetail = () => {
 					</Box>
 				</Box>
 			)}
+			{error && <Error error={error}></Error>}
 		</>
 	);
 };

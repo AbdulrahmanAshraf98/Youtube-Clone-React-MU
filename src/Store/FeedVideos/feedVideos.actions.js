@@ -15,6 +15,6 @@ export const fetchFeedVideos = (selectedCategory) => async (dispatch) => {
 		);
 		dispatch(fetchFeedVideosSuccess(data.items));
 	} catch (error) {
-		dispatch(fetchFeedVideos(error));
+		dispatch(fetchFeedVideosFailed(error));
 	}
 };

@@ -10,13 +10,21 @@ import {
 	fetchSearchFeed,
 	setVideoDetails,
 } from "../../Store/VideoDetails/videDetails.actions";
-import { videoDetailsSelector } from "../../Store/VideoDetails/videoDetails.selector";
+import {
+	videoDetailsSelector,
+	selectVideoDetailsLoading,
+	selectVideoDetailsError,
+} from "../../Store/VideoDetails/videoDetails.selector";
+import Loading from "../../Components/Loading/Loading";
+import Error from "../../Components/Error/Error";
 
 const VideoDetail = () => {
-	const videoDetailsData = useSelector(videoDetailsSelector);
-	const { videoDetailsInfo, recommendedVideos } = videoDetailsData;
 	const dispatch = useDispatch();
 	const { id } = useParams();
+	const videoDetailsData = useSelector(videoDetailsSelector);
+	const { videoDetailsInfo, recommendedVideos } = videoDetailsData;
+	const loading = useSelector(selectVideoDetailsLoading);
+	const error = useSelector(selectVideoDetailsError);
 	useEffect(() => {
 		dispatch(fetchSearchFeed(id));
 	}, [id]);
@@ -24,7 +32,8 @@ const VideoDetail = () => {
 	return (
 		<Box minHeight="95vh">
 			<Stack direction={{ xs: "column", md: "row" }}>
-				{videoDetailsInfo && recommendedVideos && (
+				{loading && !error && <Loading />}
+				{!loading && videoDetailsInfo && recommendedVideos && (
 					<>
 						<Box flex={{ xs: 1, md: 3 }} px={{ md: 2 }}>
 							<Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
@@ -90,6 +99,7 @@ const VideoDetail = () => {
 						</Box>
 					</>
 				)}
+				{error && <Error error={error}></Error>}
 			</Stack>
 		</Box>
 	);
