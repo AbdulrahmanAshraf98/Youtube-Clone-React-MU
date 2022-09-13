@@ -28,7 +28,19 @@ const SearchFeed = () => {
 				<span style={{ color: "#F31503" }}>{searchTerm}</span>Videos
 			</Typography>
 			{loading && !error && <Loading />}
-			{!loading && videos && !error && <Videos videos={videos} />}
+			{!loading && videos && !error && (
+				<Videos
+					videos={videos}
+					videoItemWidth={{
+						xs: "100%",
+						sm: "47%",
+						md: "30%",
+						lg: "300px",
+						xl: "320px",
+					}}
+					justifyContent={{ xs: "space-between" }}
+				/>
+			)}
 			{error && <Error error={error} />}
 		</Box>
 	);

@@ -8,10 +8,11 @@ const Navbar = () => {
 		<Box sx={{ backgroundColor: "#000", position: "sticky", top: "0" }}>
 			<Stack
 				direction="row"
-				alignItems="center"
+				alignItems={{ xs: "center" }}
 				p={2}
 				sx={{
 					justifyContent: "space-between",
+					flexWrap: "wrap",
 				}}>
 				<Link to="/" style={{ display: "flex", alignItems: "center" }}>
 					<img src={logo} alt="logo" height={45} />
