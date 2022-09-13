@@ -30,11 +30,11 @@ const VideoDetail = () => {
 	}, [id]);
 
 	return (
-		<Box minHeight="95vh">
-			<Stack direction={{ xs: "column", md: "row" }}>
-				{loading && !error && <Loading />}
-				{!loading && videoDetailsInfo && recommendedVideos && (
-					<>
+		<>
+			{loading && !error && <Loading />}
+			{!loading && videoDetailsInfo && recommendedVideos && (
+				<Box minHeight="95vh">
+					<Stack direction={{ xs: "column", md: "row" }}>
 						<Box flex={{ xs: 1, md: 3 }} px={{ md: 2 }}>
 							<Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
 								<ReactPlayer
@@ -97,11 +97,12 @@ const VideoDetail = () => {
 								/>
 							)}
 						</Box>
-					</>
-				)}
-				{error && <Error error={error}></Error>}
-			</Stack>
-		</Box>
+					</Stack>
+				</Box>
+			)}
+
+			{error && <Error error={error}></Error>}
+		</>
 	);
 };
 
