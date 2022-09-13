@@ -2,16 +2,24 @@ import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Error from "../../Components/Error/Error";
+import Loading from "../../Components/Loading/Loading";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Videos from "../../Components/Videos/Videos";
 import { fetchFeedVideos } from "../../Store/FeedVideos/feedVideos.actions";
-import { feedVideosSelector } from "../../Store/FeedVideos/feedVideos.selector";
+import {
+	feedVideosSelector,
+	selectFeedVideosError,
+	selectFeedVideosLoading,
+} from "../../Store/FeedVideos/feedVideos.selector";
 import { fetchDataFromApi } from "../../Utils/fetchFromApi";
 
 const Feed = () => {
 	const dispatch = useDispatch();
 	const [selectedCategory, setSelectedCategory] = useState("New");
 	const videos = useSelector(feedVideosSelector);
+	const isLoading = useSelector(selectFeedVideosLoading);
+	const error = useSelector(selectFeedVideosError);
 	useEffect(() => {
 		dispatch(fetchFeedVideos(selectedCategory));
 	}, [selectedCategory]);
@@ -47,7 +55,11 @@ const Feed = () => {
 					sx={{ color: "#fff" }}>
 					{selectedCategory} <span style={{ color: "#F31503" }}>Videos</span>
 				</Typography>
-				{videos.length !== 0 && <Videos videos={videos} />}
+				{isLoading && !error && <Loading />}
+				{!isLoading && videos.length !== 0 && !error && (
+					<Videos videos={videos} />
+				)}
+				{error && <Error error={error}></Error>}
 			</Box>
 		</Stack>
 	);

@@ -1,15 +1,22 @@
 import { Box, Typography } from "@mui/material";
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Error from "../../Components/Error/Error";
+import Loading from "../../Components/Loading/Loading";
 import Videos from "../../Components/Videos/Videos";
 import { fetchSearchFeed } from "../../Store/SearchFeed/searchFeed.actions";
-import { searchFeedVideosSelector } from "../../Store/SearchFeed/searchFeed.selector";
-import { fetchDataFromApi } from "../../Utils/fetchFromApi";
+import {
+	searchFeedVideosSelector,
+	selectSearchFeedVideosLoading,
+	selectSearchFeedVideosError,
+} from "../../Store/SearchFeed/searchFeed.selector";
 
 const SearchFeed = () => {
-	const videos = useSelector(searchFeedVideosSelector);
 	const { searchTerm } = useParams();
+	const videos = useSelector(searchFeedVideosSelector);
+	const loading = useSelector(selectSearchFeedVideosLoading);
+	const error = useSelector(selectSearchFeedVideosError);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(fetchSearchFeed(searchTerm));
@@ -20,7 +27,9 @@ const SearchFeed = () => {
 				Search results for{" "}
 				<span style={{ color: "#F31503" }}>{searchTerm}</span>Videos
 			</Typography>
-			<Videos videos={videos} />
+			{loading && !error && <Loading />}
+			{!loading && videos && !error && <Videos videos={videos} />}
+			{error && <Error error={error} />}
 		</Box>
 	);
 };
