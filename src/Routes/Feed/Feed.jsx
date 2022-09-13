@@ -57,7 +57,16 @@ const Feed = () => {
 				</Typography>
 				{isLoading && !error && <Loading />}
 				{!isLoading && videos.length !== 0 && !error && (
-					<Videos videos={videos} />
+					<Videos
+						videos={videos}
+						videoItemWidth={{
+							xs: "100%",
+							sm: "47%",
+							md: "30%",
+							lg: "350px",
+							xl: "320px",
+						}}
+					/>
 				)}
 				{error && <Error error={error}></Error>}
 			</Box>

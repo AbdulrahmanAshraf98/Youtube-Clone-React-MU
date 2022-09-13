@@ -32,7 +32,7 @@ const VideoDetail = () => {
 	return (
 		<>
 			{loading && !error && <Loading />}
-			{!loading && videoDetailsInfo && recommendedVideos && (
+			{!loading && videoDetailsData && (
 				<Box minHeight="95vh">
 					<Stack direction={{ xs: "column", md: "row" }}>
 						<Box flex={{ xs: 1, md: 3 }} px={{ md: 2 }}>
