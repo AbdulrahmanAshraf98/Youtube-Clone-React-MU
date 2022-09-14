@@ -1,7 +1,7 @@
 import { CheckCircle } from "@mui/icons-material";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./VideoCard.style.css";
 const VideoCard = ({
 	video: {
@@ -9,19 +9,26 @@ const VideoCard = ({
 		snippet,
 	},
 }) => {
+	const navigate = useNavigate();
+
 	return (
 		<Card
 			sx={{
-				boxShadow: "none",
 				borderRadius: "0",
+				backgroundColor: "#1e1e1e",
 			}}>
-			<Link to={`/video/${videoId}`}>
+			<Card sx={{ cursor: "pointer", backgroundColor: "transparent" }}>
 				<CardMedia
 					image={snippet.thumbnails.high.url}
 					alt={snippet.title}
 					sx={{ width: { xs: "130%", sm: "400px" }, height: 180 }}
+					onClick={() => navigate(`/video/${videoId}`)}
 				/>
-				<CardContent sx={{ backgroundColor: "#1e1e1e", height: "106px" }}>
+				<CardContent
+					sx={{
+						height: "106px",
+						borderRadius: "0",
+					}}>
 					<Link to={`/video/${videoId}`}>
 						<Typography variant="subtitle1" color="#fff" fontWeight="bold">
 							{snippet.title.slice(0, 60)}
@@ -36,7 +43,7 @@ const VideoCard = ({
 						</Typography>
 					</Link>
 				</CardContent>
-			</Link>
+			</Card>
 		</Card>
 	);
 };
