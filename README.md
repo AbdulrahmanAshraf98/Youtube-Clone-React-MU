@@ -1,71 +1,83 @@
-# Getting Started with Create React App
+<h3 align="center">Youtube-clone  React Js  based on Youtube-Api</h3>
+<h4 align="center"> Built With React js - material-ui - React-Redux -React Router Dom V6 - Youtube-Api </h4>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📝 Table of Contents
+- [Features](#Features)
+- [Live Demo](#LIVE-DEMO)
+- [Built Using](#built_using)
+- [Preview](#Preview)
+- [Getting Started](#getting_started)
 
-## Available Scripts
 
-In the project directory, you can run:
+## 📋 Features  <a name = "Features"></a>
+- Get Catagories Videos  
+- Get Channel/Video Details 
+- Search for Videos/Channels 
+- Play Youtube Videos 
+- Get Recommended Videos
 
-### `npm start`
+<br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🌐 [LIVE DEMO](https://youtube-clone-react-mu.vercel.app/) <a name = "LIVE-DEMO"></a>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  Vercel:https://youtube-clone-react-mu.vercel.app/
+  <hr />
 
-### `npm test`
+<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ⛏️ Built Using <a name = "built_using"></a>
 
-### `npm run build`
+- [React Js] -UI Libaray
+- [React Router Dom] -For Routing 
+- [material-ui] -React UI Tools
+- [React Redux] -State Management
+- [Redux Thunk] -Asynchronous Request
+- [reselect] -A library for creating memoized "selector" functions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🔥 Preview  <a name = "Preview"></a>
+   <a href="#">VideoPreviewLink</a>
+	<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+</div>
 
-### `npm run eject`
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<p>Install library React Js && React Router Dom && FireBase && Swiper js .</p>
+<p>Get  Your ApiKey From  rapidapi Youtube v3 </p>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Installing
 
-## Learn More
+# How to fork and clone
+One quick note about cloning this project. If you wish to make commits and push your own code, you'll need to fork the project first. Forking allows you to have your own copy of this repository by adding a duplicate version in your own profile!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can see the fork button in the top right corner of every GitHub project; click it and a copy of the project will be added to your GitHub profile under the same name as the original project.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img width="612" alt="github fork" src="https://user-images.githubusercontent.com/10578605/157998981-4bfd1f83-825c-4664-b22d-b2c7d471dc70.png">
 
-### Code Splitting
+After forking the project, simply clone it the way you would from the new forked project in your own GitHub repository and you can commit and push to it freely!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# After you fork and clone:
 
-### Analyzing the Bundle Size
+## Install dependencies
+In your terminal after you clone your project down, remember to run either  `npm install` to build all the dependencies in the project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Set your .env file 
+    create .env file with
+    REACT_APP_RAPID_API_KEY=Your_RAPID_API_KEY
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# Youtube-Clone-React-MU
+## ✍️ Authors <a name = "authors"></a>
+Abdulrhman Ashraf
+
+
