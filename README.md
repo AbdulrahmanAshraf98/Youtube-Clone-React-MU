@@ -36,7 +36,7 @@
 
 
 ## 🔥 Preview  <a name = "Preview"></a>
-   <a href="#">VideoPreviewLink</a>
+   <a href="https://drive.google.com/file/d/1GDlJdNgYhuiL3MZpk_jp5g_5ToB2B1RH/view?usp=sharing">Video Preview Link</a>
 	<br>
 
 </div>
