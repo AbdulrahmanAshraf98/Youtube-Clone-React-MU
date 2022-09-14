@@ -12,7 +12,6 @@ import {
 	selectFeedVideosError,
 	selectFeedVideosLoading,
 } from "../../Store/FeedVideos/feedVideos.selector";
-import { fetchDataFromApi } from "../../Utils/fetchFromApi";
 
 const Feed = () => {
 	const dispatch = useDispatch();

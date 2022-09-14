@@ -14,7 +14,7 @@ const Videos = ({
 			direction={direction}
 			flexWrap="wrap"
 			gap={4}
-			sx={{ justifyContent, px: { xs: 2, sm: 0 } }}>
+			sx={{ justifyContent }}>
 			{videos.map(
 				(item, index) =>
 					(item.id.videoId || item.id.channelId) && (

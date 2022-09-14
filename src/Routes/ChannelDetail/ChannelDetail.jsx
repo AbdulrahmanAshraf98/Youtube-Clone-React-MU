@@ -1,6 +1,6 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Box, CircularProgress } from "@mui/material";
+import { Box } from "@mui/material";
 import Videos from "../../Components/Videos/Videos";
 import ChannelCard from "../../Components/Videos/ChannelCard/ChannelCard";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,7 +39,7 @@ const ChannelDetail = () => {
 							<ChannelCard channelDetail={channelInfo} marginTop="-110px" />
 						)}
 					</Box>
-					<Box display="flex" p="2">
+					<Box display="flex" p={2}>
 						<Videos
 							videos={channelVideos}
 							justifyContent={{ xs: "center" }}

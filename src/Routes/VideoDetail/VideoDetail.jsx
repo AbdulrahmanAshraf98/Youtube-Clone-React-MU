@@ -3,13 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
-import { fetchDataFromApi } from "../../Utils/fetchFromApi";
 import Videos from "../../Components/Videos/Videos";
 import { useDispatch, useSelector } from "react-redux";
-import {
-	fetchSearchFeed,
-	setVideoDetails,
-} from "../../Store/VideoDetails/videDetails.actions";
+import { fetchSearchFeed } from "../../Store/VideoDetails/videDetails.actions";
 import {
 	videoDetailsSelector,
 	selectVideoDetailsLoading,
@@ -85,15 +81,15 @@ const VideoDetail = () => {
 						</Box>
 						<Box
 							flex={{ xs: 1, md: 1 }}
-							px={{ xs: 0, md: 2 }}
-							py={{ xs: 1, md: 5 }}
+							px={{ xs: 2, md: 2 }}
+							py={{ xs: 1, md: 2 }}
 							justifyContent="center"
 							alignItems="center">
 							{recommendedVideos && (
 								<Videos
 									videos={recommendedVideos.slice(1, 10)}
 									direction={{ xs: "row", md: "column" }}
-									videoItemWidth={{ xs: "100%", sm: "320px" }}
+									videoItemWidth={{ xs: "100%", sm: "47%", md: "320px" }}
 								/>
 							)}
 						</Box>
